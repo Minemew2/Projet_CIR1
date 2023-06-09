@@ -1,6 +1,6 @@
 projet.exe : main.o research.o create.o
-	gcc main.o research.o -o projet.exe
-main.o : main.c research.h create.h
+	gcc main.o research.o create.o -o projet.exe
+main.o : main.c create.h research.h
 	gcc -c -Wall main.c
 research.o : research.c research.h create.h
 	gcc -c -Wall research.c

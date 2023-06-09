@@ -5,6 +5,6 @@
 
 Film **moviesByRealisator(Node_realisator* root, char requestedRealisator);
 
-Realisator *topRealisator(Realisator **createByMoviesNumber);
+Realisator *topRealisator(Realisator **ByMoviesNumber);
 
 #endif
