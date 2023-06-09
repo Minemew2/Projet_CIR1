@@ -111,7 +111,7 @@ On aura également <ins>ready.txt</ins> : Un fichier texte vide permettant au cl
 
 <ins> Pour le serveur :</ins>
 - Les films seront représentés par leur **nom**, **réalisateur**, **catégorie** et **durée**
-- Les réalisateurs seront représentés par leur **nom** et le **nombre de films réalisés**
+- Les réalisateurs seront représentés par leur **nom**,leur **nombre de films réalisés** et les **films** qu'ils ont réalisés
 
 
 ## Distribution des rôles
@@ -175,6 +175,7 @@ struct Film{
 struct Realisator{
 	char * name;
 	int nbrMovies;
+	Film ** movies;
 }
 ```
 - **Arbre construit selon le réalisateur :**
@@ -182,8 +183,9 @@ struct Realisator{
 struct Node_realisator{
 	char character;
 	int isName;
-	Film ** associateMovies; //Tous les films de l'auteur
+	Realisator * associateRealisator; //Tous les films de l'auteur
 	Node_realisator ** childs;
+	int childsNumber;
 };
 ```
 - **Tableau selon la durée :**
