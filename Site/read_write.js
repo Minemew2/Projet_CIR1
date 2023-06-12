@@ -3,13 +3,10 @@ function writeFile(id_form,func) {
 
     var element = document.createElement('a');
     let i;
-    let text1 = document.getElementById(id_form);
-    let count = text1.elements.length;
+    let text1 = id_form;
     let intToSave = func;
-    for(let i = 0;i<count-1;i++){
         if(text1[i] != ";"){
-            intToSave += ";" + text1[i].value;
-        }
+            intToSave += ";" + text1;
     }
 
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(intToSave));
