@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Filmisen</title>
+    <link rel="stylesheet" type="text/css" href="site.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+            <h2 class="brand">
+                <span>Filmisen</span>
+            </h2>
+            <div class="inner-container">
+                <ul class="attribut">
+                    <li>
+                        <a>
+                            Acceuil
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Premier
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Classement
+                        </a>
+                    </li>
+
+                </ul>
+                <h3 class="other">
+                    Fermer le serveur
+                </h3>
+            </div>
+    </nav>
+
+    <main>
+        <div class="boutons">
+            <h1>Filmographie</h1>
+            <div class="real">
+                <label for="real"></label>
+                <input type="text" name="real" id="real" value="" placeholder="Réalisateur" required="required">
+            </div>
+            <div class="tim">
+                <label for="tim"></label>
+                <select name="temps" id="tim">
+                    <option value="">Durée</option>
+                    <option value="80">80 minutes</option>
+                    <option value="90">90 minutes</option>
+                    <option value="100">100 minutes</option>
+                    <option value="110">110 minutes</option>
+                    <option value="120">120 minutes</option>
+                    <option value="130">130 minutes</option>
+                </select>
+            </div>
+            <div class="cate">
+                <label for="cate"></label>
+                <select name="categorie" id="cate">
+                    <option value="">Catégorie</option>
+                    <option value="action">Action</option>
+                    <option value="comedie">Comédie</option>
+                    <option value="documentaire">Documentaire</option>
+                    <option value="drame">Drame</option>
+                    <option value="fantastique">Fantastique</option>
+                    <option value="horreur">Horreur</option>
+                    <option value="jeunesse">Jeunesse et famille</option>
+                    <option value="romance">Romance</option>
+                    <option value="sf">SF</option>
+                    <option value="thriller">Thriller</option>
+                </select>
+            </div>
+            <input type="submit" value="Envoyer">
+        </div>
+    </main>
+</body>
