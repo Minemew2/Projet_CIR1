@@ -1,15 +1,19 @@
 // ------- WRITE FILE -------
 function writeFile(id_form,func) {
-
     var element = document.createElement('a');
     let i;
-    let text1 = id_form;
-    let intToSave = func;
-        if(text1[i] != ";"){
-            intToSave += ";" + text1;
+    let textToSave = 0;
+    for(i = 0; i < id_form.length; i++){
+    let text = id_form[i];
+    let data = func[i];
+    if(textToSave == 0){
+        textToSave = data + ";" + text;
+        }else{
+        textToSave.push = data + ";" + text;    
+        }
     }
 
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(intToSave));
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
     element.setAttribute('download', 'request.txt');
 
     element.style.display = 'none';
