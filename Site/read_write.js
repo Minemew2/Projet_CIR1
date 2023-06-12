@@ -2,15 +2,11 @@
 function writeFile(id_form,func) {
     var element = document.createElement('a');
     let i;
-    let textToSave = 0;
+    let textToSave = [0];
     for(i = 0; i < id_form.length; i++){
     let text = id_form[i];
     let data = func[i];
-    if(textToSave == 0){
-        textToSave = data + ";" + text;
-        }else{
-        textToSave.push = data + ";" + text;    
-        }
+    textToSave +="\n" + data + ";" + text;    
     }
 
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
