@@ -2,7 +2,7 @@
 function writeFile(id_form,func) {
     var element = document.createElement('a');
     let i;
-    let textToSave = [0];
+    let textToSave = [];
     for(i = 0; i < id_form.length; i++){
     let text = id_form[i];
     let data = func[i];
