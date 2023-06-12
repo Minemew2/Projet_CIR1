@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport">
     <title>Filmisen</title>
+    <link rel="icon"
+        href="https://png.pngtree.com/png-vector/20210227/ourmid/pngtree-letter-x-logo-design-png-png-image_2973718.jpg"
+        type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="site.css">
     <script src="site.js"></script>
+    <script src="read_write.js"></script>
 </head>
 
 <body>
@@ -39,11 +43,11 @@
     </nav>
 
     <main>
-        <form action="" onsubmit="return donnees()">
+        <form action="search.html" onsubmit="return donnees()">
             <h1>Filmographie</h1>
-            <input type="text" name="realisator" id="realisator" value="" placeholder="Réalisateur" required="required">
-            <input type="number" name="time" id="realisator" placeholder="Durée" min="10" max="300">
-            <select name="category" id="realisator">
+            <input type="text" name="realisator" id="real" value="" placeholder="Réalisateur">
+            <input type="number" name="time" id="duree" placeholder="Durée" min="10" max="300">
+            <select name="category" id="categorie">
                 <option value="">Catégorie</option>
                 <option value="action">Action</option>
                 <option value="comedie">Comédie</option>

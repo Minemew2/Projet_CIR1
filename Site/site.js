@@ -3,10 +3,18 @@ function donnees() {
     var duree = document.getElementById("duree").value;
     var categorie = document.getElementById("categorie").value;
 
-    console.log(real)
-    console.log(duree)
-    console.log(categorie)
+    let id_forms = [];
+    let funcs = [];
+    if (real) {
+        id_forms.push(real);
+        funcs.push("1");
+    }
+    if (duree) {
+        id_forms.push(duree);
+        funcs.push("2");
+    }
+    /*if (categorie) {
+        writeFile(categorie,3);
+    }*/
+    writeFile(id_forms, funcs);
 }
-
-
-

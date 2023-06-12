@@ -96,7 +96,7 @@ a:hover {
     cursor: pointer;
 }
 
-a:visited{
+a:visited {
     color: blueviolet;
 }
 
@@ -104,6 +104,6 @@ h2:hover {
     cursor: default;
 }
 
-.other:hover{
+.other:hover {
     cursor: pointer;
 }
