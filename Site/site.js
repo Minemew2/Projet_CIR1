@@ -13,20 +13,17 @@ function donnees() {
         id_forms.push(duree);
         funcs.push("2");
     }
-    /*if (categorie) {
-        writeFile(categorie,3);
-    }*/
     writeFile(id_forms, funcs);
 }
 
 function top() {
     let id_form = "trois";
-    let func = 3;
+    let func = "3";
     writeFile(id_form, func);
 }
 
 function rank() {
     let id_form = "quatre";
-    let func = 4;
+    let func = "4";
     writeFile(id_form, func);
 }
