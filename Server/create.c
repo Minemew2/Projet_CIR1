@@ -132,9 +132,12 @@ void readCSV(char * nom_fichier_csv, Node_realisator * root, byMovieNumber * byM
     int duration = 0;
     Realisator * newRealisator = NULL;
     Film * newFilm = NULL;
+
+    int line_number = 0;
     
     while (fgets(line, 1024, csv))
     {
+        line_number++;
         char* tmp = strdup(line);
         // printf("%s\n", tmp);
         char * tok;
@@ -153,8 +156,11 @@ void readCSV(char * nom_fichier_csv, Node_realisator * root, byMovieNumber * byM
                 category = tok;
                 newFilm = createMovie(movie_name, realisator_name, category, duration);
                 addMovietoRealisator(newFilm, findRealisator(root, realisator_name));
-                addMovietoRealisator(newFilm, foundRealisatorInMovieNumber(byMoviesNumber, realisator_name));
+                
+                addRealisatorbyMovies(byMoviesNumber, createRealisator(realisator_name, 0), newFilm);
+
                 addMoviebyDuration(durationArray, duration, newFilm);
+                printf("%d\n", line_number);
                 break;
 
             default:
@@ -162,13 +168,12 @@ void readCSV(char * nom_fichier_csv, Node_realisator * root, byMovieNumber * byM
                 newRealisator = createRealisator(tok, 0);
                 addWordwithArray(root, tok, newRealisator);
 
-                addRealisatorbyMovies(byMoviesNumber, createRealisator(realisator_name, 0));
+                
                 break;
             }
             field++;
         }
         field = 0;
-        // addWord(root, movieName, createRealisator(realisatorName, 0));
 
     }
 
@@ -179,25 +184,11 @@ void readCSV(char * nom_fichier_csv, Node_realisator * root, byMovieNumber * byM
 
 void addMovietoRealisator(Film * movie, Realisator * realisator){ 
     realisator->nbrMovies++;
-    if(realisator->movies == NULL){
-        realisator->movies = createFilmList();
-        realisator->movies->data = movie;
-    } else {
-        Film_List * parcours = realisator->movies;
-        Film_List * end_of_list = NULL;
-        while (parcours != NULL)
-        {
-            end_of_list = parcours;
-            parcours = parcours->next;
-        }
-
-        end_of_list->next = createFilmList();
-        end_of_list->next->data = movie;
-    }
-
     
-
-    
+    Film_List * newMovie = createFilmList();
+    newMovie->data = movie;
+    newMovie->next = realisator->movies;
+    realisator->movies = newMovie;
         
 }
 
@@ -242,25 +233,26 @@ byMovieNumber * createByMovieNumber(Realisator * realisator){
 
 }
 
-void addRealisatorbyMovies(byMovieNumber * array, Realisator * realisator){
+void addRealisatorbyMovies(byMovieNumber * array, Realisator * realisator, Film * movie){
     int newRealisator = 1;
 
     byMovieNumber * parcours = array;
-    byMovieNumber * before = NULL;
+    byMovieNumber * new_head = createByMovieNumber(realisator);
     
-    while (parcours != NULL)
+    while (parcours != NULL && newRealisator)
     {
         if(strcmp(parcours->data->name, realisator->name) == 0){
-            // parcours->data->nbrMovies++;
             newRealisator = 0;
+            addMovietoRealisator(movie, parcours->data);
         }
-        before = parcours;
         parcours = parcours->next;
         
     }
     
     if(newRealisator){
-        before->next = createByMovieNumber(realisator);
+        addMovietoRealisator(movie, new_head->data);
+        new_head->next = array->next;
+        array->next = new_head;
     }
 
 }
@@ -350,6 +342,7 @@ byMovieNumber * sortingByMovieNumber(byMovieNumber * array){
 
     }
 
+    printf("Sorted !\n");
     return array;
 }
 
@@ -363,11 +356,13 @@ Film_List * createFilmList(){
 Realisator * foundRealisatorInMovieNumber(byMovieNumber * array, char * name){
     byMovieNumber * parcours = array;
     Realisator * found = NULL;
+    int founded = 0;
 
-    while (parcours != NULL)
+    while (parcours != NULL && founded == 0)
     {
         if(strcmp(parcours->data->name, name) == 0){
             found = parcours->data;
+            founded = 1;
         }
 
         parcours = parcours->next;
@@ -382,16 +377,10 @@ void addMoviebyDuration(Film_List ** array, int duration, Film * movie){
         array[duration-1] = createFilmList();
         array[duration-1]->data = movie;
     } else {
-        Film_List * parcours = array[duration-1];
-        Film_List * end_of_list = NULL;
-        while (parcours != NULL)
-        {
-            end_of_list = parcours;
-            parcours = parcours->next;
-        }
-
-        end_of_list->next = createFilmList();
-        end_of_list->next->data = movie;
+        Film_List * new_head = createFilmList();
+        new_head->data = movie;
+        new_head->next = array[duration-1];
+        array[duration-1] = new_head;
     }
 }
 

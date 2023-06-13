@@ -64,7 +64,7 @@ void addWordwithArray(Node_realisator * root, char * word, Realisator * associat
 void readCSV(char * nom_fichier_csv, Node_realisator * root, byMovieNumber * byMoviesNumber, Film_List **);
 Realisator * findRealisator(Node_realisator * root, char * realisator);
 
-void addRealisatorbyMovies(byMovieNumber * array, Realisator * realisator);
+void addRealisatorbyMovies(byMovieNumber * array, Realisator * realisator, Film * movie);
 
 byMovieNumber * createByMovieNumber(Realisator * realisator);
 void printByMovieNumber(byMovieNumber * base);
