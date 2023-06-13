@@ -130,10 +130,6 @@ a:hover {
     cursor: pointer;
 }
 
-a:visited {
-    color: blueviolet;
-}
-
 h2:hover {
     cursor: default;
 }
