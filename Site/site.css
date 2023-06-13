@@ -22,11 +22,11 @@ a {
     height: 10%;
     width: 100%;
     margin-top: 1%;
-    margin-left: -1%;
+    margin-left: -0.5%;
     border-radius: 1%;
     border-color: black;
-    border-width: 5%;
-    border-style: outset;
+    border-width: 1%;
+    border-style: solid;
     background-color: #fecc00;
 }
 
@@ -54,8 +54,8 @@ a {
     width: 10%;
     height: 10%;
     border-radius: 10%;
-    border-width: 1%;
-    border-style: inherit;
+    border-width: 1px;
+    border-style: solid;
     background-color: #c79f00;
 }
 
@@ -124,6 +124,7 @@ form>select {
 input[type="submit"] {
     margin-top: 30px;
     margin-left: 55%;
+    margin-bottom: 30px;
 }
 
 a:hover {
