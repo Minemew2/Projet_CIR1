@@ -1,5 +1,3 @@
-let _box = document.createElement("div");
-
 let nbfilms=3;
 let titre=["Titanic","Avatar","Indiana Jones"];
 let realisator=["James Cameron","James Cameron","Steven Spielberg"];;
