@@ -3,21 +3,30 @@ function donnees() {
     var duree = document.getElementById("duree").value;
     var categorie = document.getElementById("categorie").value;
 
-    let id_form = [];
-    let func = [];
+    let id_forms = [];
+    let funcs = [];
     if (real) {
-        id_form.push(real);
-        func.push("1");
-        console.log(func);
+        id_forms.push(real);
+        funcs.push("1");
     }
     if (duree) {
-        console.log(duree);
-        id_form.push(duree);
-        console.log(id_form);
-        func.push("2");
+        id_forms.push(duree);
+        funcs.push("2");
     }
     /*if (categorie) {
         writeFile(categorie,3);
     }*/
+    writeFile(id_forms, funcs);
+}
+
+function top() {
+    let id_form = "trois";
+    let func = 3;
+    writeFile(id_form, func);
+}
+
+function rank() {
+    let id_form = "quatre";
+    let func = 4;
     writeFile(id_form, func);
 }
