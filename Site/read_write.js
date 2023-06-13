@@ -2,17 +2,30 @@
 function writeFile(id_form,func) {
     var element = document.createElement('a');
     let i;
-    let textToSave = [];
+    let textToSave = 0;
+    let text;
+    let data;
     if(id_form.length >1){
-        for(i = 0; i < (id_form.length -1); i++){
-            let text = id_form[i];
-            let data = func[i];
-            textToSave += data + ";" + text + "\n";
+        for(i = 0; i < (id_form.length); i++){
+            text = id_form[i];
+            data = func[i];
+            switch(i){
+                case 0 :
+                    textToSave = data + ";" + text + "\n"; 
+                    break;
+                case id_form.length :
+                    textToSave += data + ";" + text; 
+                    break;
+                default :
+                    textToSave += data + ";" + text + "\n";
+                    break;
+            }
         }
+    }else if(id_form.length == 1){
+        text = id_form;
+        data = func;
+        textToSave = data + ";" + text;    
     }
-    let text = id_form[id_form.length];
-    let data = func[id_form.length];
-    textToSave += data + ";" + text;    
 
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
     element.setAttribute('download', 'request.txt');
