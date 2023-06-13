@@ -42,9 +42,9 @@
         </div>
     </nav>
     
-    <main>
-        <form action="search.html" onsubmit="return donnees()">
-            <h1>Filmographie</h1>
+    <main class="maintheme">
+        <form action="search.html" onsubmit="return donnees()" class="request">
+            <h1 class="request">Filmographie</h1>
             <input type="text" name="realisator" id="real" value="" placeholder="Réalisateur">
             <input type="number" name="time" id="duree" placeholder="Durée" min="10" max="300">
             <select name="category" id="categorie">
@@ -61,7 +61,7 @@
                 <option value="thriller">Thriller</option>
             </select>
             <input type="submit" value="Envoyer">
+            <div class="square"></div>
         </form>
     </main>
-    <div class="square"></div>
 </body>
