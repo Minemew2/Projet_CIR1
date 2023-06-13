@@ -244,3 +244,14 @@ Tableau trié par ordre décroissant selon le nombre de films du réalisateur
 - **void** <ins>filmResult</ins>(**Film \*\*** movies) -> Créé un fichier result.txt contenant tous les films dans le tableau movies
 - **void** <ins>realisatorResult</ins>(**Realisator \*** realisator) -> Créé un fichier result.txt contenant les informations du réalisateur en paramètre
 - **void** <ins>rankResult</ins>(**Realisator \*\*** realisators) -> Créé un fichier result.txt contenant les informations de tous les réalisateurs, dans l'ordre du tableau en paramètre
+
+## Logs
+- <ins>Lundi 12 juin : </ins>
+Création d'une fonction readCSV, qui lit une seule fois le fichier csv, créant des structures qu'elle envoit aux fonctions créant les structures de recherhce
+
+Changement de structure de byMovieNumber de tableau à lcaa
+
+- <ins>Mardi  13 juin : </ins>
+
+Changement de Films dans la struct Realisator, qui passe d'un tableau à une liste chainee
+Retrait des valeurs minTime et maxTime
