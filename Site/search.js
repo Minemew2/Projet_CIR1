@@ -1,7 +1,8 @@
 let nbfilms=3;
 let titre=["Titanic","Avatar","Indiana Jones"];
-let realisator=["James Cameron","James Cameron","Steven Spielberg"];;
-let duree=["120","180","90"];;
+let realisator=["James Cameron","James Cameron","Steven Spielberg"];
+let duree=["120","180","90"];
+/*let categorie=[];*/
 
 for (let i = 0; i < nbfilms; i++) {
     ajouterLigne(i,titre[i],realisator[i],duree[i]);
@@ -20,4 +21,6 @@ function ajouterLigne(index,titre,realisateur,duree)
     col3.innerhtml=realisateur;
     let col4=document.row.createElement("th");
     col4.innerhtml=duree;
+    /*let col5=document.row.createElement("th");
+    col5.innerhtml=categorie*/
 }
