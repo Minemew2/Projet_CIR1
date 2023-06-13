@@ -1,41 +1,27 @@
-let _box=document.createElement("div");
-var tab=new Array();
-tab[0]='Index';
-tab[1]='Réalisateur'
-tab[2]='Nombre de films'
+var realisator=["James Cameron"]
+var title=["Titanic","Avatar"]
+var time=["120","180"]
+var category=["Drama","Science Fiction"]
 
-function generate_table() {
-    // get the reference for the body
-    var body = document.getElementsByTagName("body")[0];
-  
-    // creates a <table> element and a <tbody> element
-    var tbl = document.createElement("table");
-    var tblBody = document.createElement("tbody");
-  
-    // creating all cells
-    for (var i = 0; i < 2; i++) {
-      // creates a table row
-      var row = document.createElement("tr");
-  
-      for (var j = 0; j < 2; j++) {
-        // Create a <td> element and a text node, make the text
-        // node the contents of the <td>, and put the <td> at
-        // the end of the table row
-        var cell = document.createElement("td");
-        var cellText = document.createTextNode("cell in row "+i+", column "+j);
-        cell.appendChild(cellText);
-        row.appendChild(cell);
-      }
-  
-      // add the row to the end of the table body
-      tblBody.appendChild(row);
-    }
-  
-    // put the <tbody> in the <table>
-    tbl.appendChild(tblBody);
-    // appends <table> into <body>
-    body.appendChild(tbl);
-    // sets the border attribute of tbl to 2;
-    tbl.setAttribute("border", "2");
-  }
-  
+var nombreDeLignes = title.length;
+var tableauHTML = '<table>';
+
+tableauHTML += '<tr>';
+tableauHTML += '<th>Index</th>';
+tableauHTML += '<th>Title</th>';
+tableauHTML += '<th>Time</th>';
+tableauHTML += '<th>Category</th>';
+tableauHTML += '</tr>';
+
+for (var i = 0; i < nombreDeLignes; i++) {
+    tableauHTML += '<tr>';
+    tableauHTML += '<td>' + i + '</td>'; 
+    tableauHTML += '<td>' + title[i] + '</td>'; 
+    tableauHTML += '<td>' + time[i] + '</td>'; 
+    tableauHTML += '<td>' + category[i] + '</td>'; 
+    tableauHTML += '</tr>';
+}
+
+tableauHTML += '</table>';
+
+document.body.innerHTML += tableauHTML;

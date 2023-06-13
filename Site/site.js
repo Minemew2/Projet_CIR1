@@ -14,9 +14,6 @@ function dataClicked() {
         id_forms.push(duree);
         funcs.push("2");
     }
-    /*if (categorie) {
-        writeFile(categorie,3);
-    }*/
     writeFile(id_forms, funcs);
     
 }
@@ -26,7 +23,6 @@ function firstClicked() {
     let func = [3];
     writeFile(id_form, func);
 }
-
 function rankClicked() {
     let id_form = ["quatre"];
     let func = [4];
