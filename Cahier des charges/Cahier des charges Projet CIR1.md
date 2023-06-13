@@ -98,12 +98,26 @@ une **chaine de caractères** représentant le nom du film
 
 OU
 
-pour la recherche de réalisateurs
+pour la recherche du premier realisateur
+```txt
+executionTime
+realisator1;moviesNbr1
+movieName1;time1;category1
+movieName2;time2;category2
+movieName3;time3;category3
+```
+
+OU 
+
+pour le classement de realisateur
 ```txt
 executionTime
 realisator1;moviesNbr1
 realisator2;moviesNbr2
+...
 ```
+avec les realisateurs dans l'ordre
+
 <ins>realisator</ins> Le nom du réalisateur
 <ins>moviesNbr</ins> le nombre de films du réalisateur
 
@@ -233,16 +247,16 @@ Tableau trié par ordre décroissant selon le nombre de films du réalisateur
 
 - **Film \*\*** <ins>moviesByTime</ins>(**int** timeAsked, **int** minTime, **int** maxTime, **Film \*\*\*** time_array) -> Recherche les films par durée. Pour cela, on accède au tableau time_array avec comme index *timeAsked - minTime*
 *Exemple* : Si on veut accéder aux films de 125 minutes, et que les films les plus courts sont de 120 minutes, on sait que les films recherchés seront en 6ème dans time_array, soit à l'index 5.
-- **Film \*\*** <ins>moviesByRealisator</ins>(**Node_realisator \*** root, **char \*** requestedRealisator ) -> Cherche tous les films d'un réalisateur en parcourant un arbre selon l'algorithme avancée trie
-- **Realisator \***  <ins>topRealisator</ins>(**Realisator *\*\*** byMoviesNumber) -> Renvoie le premier élément de byMoviesNumber, qui correspond au réalisateur avec le plus de film
+- **Film_List \*** <ins>moviesByRealisator</ins>(**Node_realisator \*** root, **char \*** requestedRealisator ) -> Cherche tous les films d'un réalisateur en parcourant un arbre selon l'algorithme avancée trie
+- **Realisator \***  <ins>topRealisator</ins>(**byMovieNumber \*** byMoviesNumber) -> Renvoie le premier élément de byMoviesNumber, qui correspond au réalisateur avec le plus de film
 
 <ins>Fonctions de gestions des fichiers textes</ins>
 
 *On listera ici toutes les fonctions gérant les fichiers textes permettant au client et au serveur de communiquer*
 
 - **void** <ins>readRequest</ins>(**FILE \*** requestFile) -> Lit le fichier request.txt et appelle une des fonctions de recherches selon son contenu. Appellera les fonctions créant result.txt
-- **void** <ins>filmResult</ins>(**Film \*\*** movies) -> Créé un fichier result.txt contenant tous les films dans le tableau movies
-- **void** <ins>realisatorResult</ins>(**Realisator \*** realisator) -> Créé un fichier result.txt contenant les informations du réalisateur en paramètre
+- **void** <ins>filmResult</ins>(**Film_List \*** movies, **float** executionTiùe) -> Créé un fichier result.txt contenant tous les films dans le tableau movies
+- **void** <ins>realisatorResult</ins>(**Realisator \*** realisator, **float** executionTime) -> Créé un fichier result.txt contenant les informations du réalisateur en paramètre
 - **void** <ins>rankResult</ins>(**Realisator \*\*** realisators) -> Créé un fichier result.txt contenant les informations de tous les réalisateurs, dans l'ordre du tableau en paramètre
 
 ## Logs
@@ -255,3 +269,8 @@ Changement de structure de byMovieNumber de tableau à lcaa
 
 Changement de Films dans la struct Realisator, qui passe d'un tableau à une liste chainee
 Retrait des valeurs minTime et maxTime
+Changement de type de moviesByRealisator
+Changement de parametre de filmResult
+Changement de parametre de realisatorResult
+Precision sur la forme de result.txt
+Cgt de parametre sur topRealisator

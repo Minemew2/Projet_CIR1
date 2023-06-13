@@ -132,9 +132,6 @@ void readCSV(char * nom_fichier_csv, Node_realisator * root, byMovieNumber * byM
     int duration = 0;
     Realisator * newRealisator = NULL;
     Film * newFilm = NULL;
-
-    int minTime = 0;
-    int maxTime = 0;
     
     while (fgets(line, 1024, csv))
     {
@@ -150,14 +147,6 @@ void readCSV(char * nom_fichier_csv, Node_realisator * root, byMovieNumber * byM
             
             case 2:
                 duration = atoi(tok);
-                if(minTime == 0 && maxTime == 0){
-                    minTime = duration;
-                    maxTime = duration;
-                } else if(duration < minTime){
-                    minTime = duration;
-                } else if(duration > maxTime){
-                    maxTime = duration;
-                }
                 break;
 
             case 3:
