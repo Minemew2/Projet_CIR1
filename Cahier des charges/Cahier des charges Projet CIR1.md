@@ -81,6 +81,7 @@ avec :
 | 3                 | Afficher le réalisateur avec le plus de films réalisés          |
 | 4                 | Afficher tous les réalisateurs par classement de films réalisés |
 | 5                  |      Fermer le serveur                                                           |
+| 6                 | Rechercher les films par categorie                               |
 
 **request_value** ce que l'utilisateur recherche précisement
 

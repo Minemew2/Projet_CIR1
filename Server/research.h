@@ -9,4 +9,5 @@ Realisator *topRealisator(byMovieNumber * ranking);
 
 Film_List * moviesByTime(Film_List ** byDuration, int duration);
 
+Film_List * movie_list_comparator(Film_List * first, Film_List * second);
 #endif
