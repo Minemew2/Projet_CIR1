@@ -5,17 +5,15 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+#include "communication.h"
+
 
 
 
 
 int main(){
-    /* Realisator * real = createRealisator("tou", 3);
-    Realisator * real2 = createRealisator("tab", 4);
-    Node_realisator * root = initNode('R');
-    addWord(root, "tou", real);
-    addWord(root, "tab", real2);
-    printTree(root); */
+    FILE * request = fopen("request.txt", "r");
+
     Node_realisator * trueTree = initNode('0');
     Realisator * fake = createRealisator("byMovieNumberRoot", -1);
 
@@ -26,7 +24,7 @@ int main(){
     readCSV("test.csv", trueTree, byMoviesNumber, byDuration);
 
     byMoviesNumber = sortingByMovieNumber(byMoviesNumber);
-    printByMovieNumber(byMoviesNumber);
+    // printByMovieNumber(byMoviesNumber);
 
     // Node_realisator * trueTree = initNode('R');
     for(int i = 0; i<27; i++){
@@ -37,5 +35,8 @@ int main(){
     // printTree(trueTree);
 
     // printFilmList(byDuration[266]); 
+
+    // realisatorResult(, 0.15);
+    realisatorResult(topRealisator(byMoviesNumber), 0.15);
     return 0;
 }

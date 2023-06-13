@@ -3,8 +3,8 @@
 
 #include "create.h"
 
-Film **moviesByRealisator(Node_realisator* root, char requestedRealisator);
+Film_List * moviesByRealisator(Node_realisator * root, char * requestedRealisator);
 
-Realisator *topRealisator(Realisator **ByMoviesNumber);
+Realisator *topRealisator(byMovieNumber * ranking);
 
 #endif
