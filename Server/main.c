@@ -8,23 +8,23 @@
 #include "communication.h"
 
 
-
+#define DATABASE "test.csv"
 
 
 int main(){
     FILE * request = fopen("request.txt", "r");
 
     Node_realisator * trueTree = initNode('0');
-    Realisator * fake = createRealisator("byMovieNumberRoot", -1);
+    Realisator * root = createRealisator("byMovieNumberRoot", -1);
 
-    byMovieNumber * byMoviesNumber = createByMovieNumber(fake);
+    byMovieNumber * ranking = createByMovieNumber(root);
 
     Film_List ** byDuration = calloc(MAX_MOVIE_DURATION, sizeof(byDuration));
 
-    readCSV("test.csv", trueTree, byMoviesNumber, byDuration);
+    readCSV(DATABASE, trueTree, ranking, byDuration);
 
-    byMoviesNumber = sortingByMovieNumber(byMoviesNumber);
-    // printByMovieNumber(byMoviesNumber);
+    ranking = sortingByMovieNumber(ranking);
+    // printByMovieNumber(ranking);
 
     // Node_realisator * trueTree = initNode('R');
     for(int i = 0; i<27; i++){
@@ -35,8 +35,18 @@ int main(){
     // printTree(trueTree);
 
     // printFilmList(byDuration[266]); 
-
-    // realisatorResult(, 0.15);
-    realisatorResult(topRealisator(byMoviesNumber), 0.15);
+    char user = 0;
+    do{
+        request = fopen("request.txt", "r");
+        if(request != NULL){
+            readRequest(request, trueTree, ranking, byDuration);
+        } else {
+            fclose(request);
+        }
+        
+        // scanf("%c\n", &user);
+    } while (user != 'q');
+    
+    
     return 0;
 }

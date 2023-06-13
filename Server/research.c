@@ -6,18 +6,13 @@
 
 
 Film_List * moviesByRealisator(Node_realisator * root, char * requestedRealisator){
-    Film_List * fake_list = createFilmList();
-    fake_list->data = createMovie("Film 1", "Leandre", "comedy", 50);
-
-    fake_list->next = createFilmList();
-
-    fake_list->next->data = createMovie("Film 2", "Leandre", "comedy", 100);
-
-    return fake_list;
+    return findRealisator(root, requestedRealisator)->movies;
 }
 
 Realisator *topRealisator(byMovieNumber * ranking){
     return ranking->next->data;
 }
 
-
+Film_List * moviesByTime(Film_List ** byDuration, int duration){
+    return byDuration[duration-1];
+}

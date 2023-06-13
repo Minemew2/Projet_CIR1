@@ -7,4 +7,6 @@ Film_List * moviesByRealisator(Node_realisator * root, char * requestedRealisato
 
 Realisator *topRealisator(byMovieNumber * ranking);
 
+Film_List * moviesByTime(Film_List ** byDuration, int duration);
+
 #endif
