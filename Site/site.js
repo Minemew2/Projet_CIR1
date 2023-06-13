@@ -19,6 +19,8 @@ function dataClicked() {
     }*/
     writeFile(id_forms, funcs);
     
+    document.location.href = "search.html";
+    
 }
 
 function firstClicked() {
