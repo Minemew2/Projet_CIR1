@@ -12,13 +12,13 @@ function writeFile(id_form,func) {
             switch(i){
                 case 0 :
                     textToSave = data + ";" + text + "\n"; 
-                    break;
+                    return;
                 case id_form.length :
                     textToSave += data + ";" + text; 
-                    break;
+                    return;
                 default :
                     textToSave += data + ";" + text + "\n";
-                    break;
+                    return;
             }
         }
     }else if(id_form.length == 1){
@@ -59,3 +59,22 @@ function zreadFile(){
     return readFileByName("results.txt");
 }
 // -------------------------
+
+
+
+function category(text){
+    switch(text[0]){
+        case 0 :
+            return 0;
+        case 1 :
+            return 1;
+        case 2 :
+            return 2;
+        case 3 :
+            return 3;
+        case 4 :
+            return 4;
+        case 5 :
+            return 5;
+    }
+}

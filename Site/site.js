@@ -2,6 +2,7 @@ function donnees() {
     var real = document.getElementById("real").value;
     var duree = document.getElementById("duree").value;
     var categorie = document.getElementById("categorie").value;
+    
 
     let id_form = [];
     let func = [];
