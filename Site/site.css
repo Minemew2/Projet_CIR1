@@ -16,10 +16,13 @@ a {
 .navbar {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-self: center;
     height: 10%;
     width: 100%;
     margin-top: 1%;
+    margin-left: -1%;
     border-radius: 1%;
     border-color: black;
     border-width: 5%;
@@ -28,26 +31,32 @@ a {
 }
 
 .brand {
-    width: 15%;
-    height: 100%;
+    margin-left: 5%;
 }
 
-span {
-    width: 100%;
-    margin-left: 50%;
-    margin-top: 30%;
+.other {
+    margin-right: 5%;
 }
 
 .inner-container {
     display: flex;
-    width: 85%;
-    height: 100%;
     font-weight: bold;
-    font-size: large;
+    justify-content: space-around;
+    width: 60%;
+
 }
 
 .attribut {
-    width: auto;
+    text-align: center;
+    display: block;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 10%;
+    height: 10%;
+    border-radius: 10%;
+    border-width: 1%;
+    border-style: inherit;
+    background-color: #c79f00;
 }
 
 ul {
@@ -60,14 +69,7 @@ ul>li {
     margin-left: 40%;
 }
 
-.other {
-    margin-right: 5%;
-    margin-left: auto;
-    width: 10%;
-    margin-top: 1%;
-    text-decoration: none;
 
-}
 
 main {
     z-index: 1;
