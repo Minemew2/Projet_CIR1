@@ -81,11 +81,13 @@ avec :
 | 3                 | Afficher le réalisateur avec le plus de films réalisés          |
 | 4                 | Afficher tous les réalisateurs par classement de films réalisés |
 | 5                  |      Fermer le serveur                                                           |
+| 6                 | Rechercher les films par categorie                               |
 
 **request_value** ce que l'utilisateur recherche précisement
 
 - <ins>result.txt</ins> : Fichier csv contenant le résultat de la requête (pour la recherche de films)
 ```txt
+request
 executionTime
 movieName1;time1;category1
 movieName2;time2;category2
@@ -98,14 +100,35 @@ une **chaine de caractères** représentant le nom du film
 
 OU
 
-pour la recherche de réalisateurs
+pour la recherche du premier realisateur
 ```txt
+request
+executionTime
+realisator1;moviesNbr1
+movieName1;time1;category1
+movieName2;time2;category2
+movieName3;time3;category3
+```
+
+OU 
+
+pour le classement de realisateur
+```txt
+request
 executionTime
 realisator1;moviesNbr1
 realisator2;moviesNbr2
+...
 ```
+avec les realisateurs dans l'ordre
+
 <ins>realisator</ins> Le nom du réalisateur
 <ins>moviesNbr</ins> le nombre de films du réalisateur
+
+Si on reçoit une requete illisible pour le serveur :
+```text
+error
+```
 
 On aura également <ins>ready.txt</ins> : Un fichier texte vide permettant au client de savoir quand il peut lire le fichier result.txt
 
@@ -190,10 +213,9 @@ struct Node_realisator{
 ```
 - **Tableau selon la durée :**
 ```C
-Film ** time_array;
+Film_List ** byDuration;
 ```
-Tableau trié par ordre croissant de durée, incrémenté de 1 par index.
-*Exemple :* Le film le plus court dure 120min. Donc index0 = 120min, index1 = 121min etc...
+Tableau contenant autant de cases mémoires que de durees possibles, avec un maximum predefini.
 - **Tableau de classement par nombre de films :**
 ```C
 Realisator ** byMoviesNumber;
@@ -201,8 +223,6 @@ Realisator ** byMoviesNumber;
 Tableau trié par ordre décroissant selon le nombre de films du réalisateur
 
 #### Données
-- **int** <ins>minTime</ins> -> La durée minimum parmi les films, récupérée à la création des structures
-- **int** <ins>maxTime</ins> -> La durée maximale parmi les films, récupérée à la création des structures
 - **Node_realisator \*** <ins>moviesByRealisator</ins> -> L'arbre de recherche des films par réalisateur
 - des tableaux <ins>time_array</ins> et <ins>byMoviesNumber</ins>
 - **int** <ins>isRunning</ins> -> Indique que le serveur tourne
@@ -231,16 +251,35 @@ Tableau trié par ordre décroissant selon le nombre de films du réalisateur
 
 *Pour chacune des fonctions de recherche, on lancera au début de celle-ci la fonction clock() de la bibliothèque time.h, puis une seconde fois à la fin de la fonction, afin de savoir le temps d'exécution de la requête. On écrira ce résultat dans un fichier result.txt*
 
-- **Film \*\*** <ins>moviesByTime</ins>(**int** timeAsked, **int** minTime, **int** maxTime, **Film \*\*\*** time_array) -> Recherche les films par durée. Pour cela, on accède au tableau time_array avec comme index *timeAsked - minTime*
+- **Film_List \*** <ins>moviesByTime</ins>(**Film_List \*** byDuration, **int** duration) -> Recherche les films par durée. Pour cela, on accède au tableau time_array avec comme index *timeAsked - minTime*
 *Exemple* : Si on veut accéder aux films de 125 minutes, et que les films les plus courts sont de 120 minutes, on sait que les films recherchés seront en 6ème dans time_array, soit à l'index 5.
-- **Film \*\*** <ins>moviesByRealisator</ins>(**Node_realisator \*** root, **char \*** requestedRealisator ) -> Cherche tous les films d'un réalisateur en parcourant un arbre selon l'algorithme avancée trie
-- **Realisator \***  <ins>topRealisator</ins>(**Realisator *\*\*** byMoviesNumber) -> Renvoie le premier élément de byMoviesNumber, qui correspond au réalisateur avec le plus de film
+- **Film_List \*** <ins>moviesByRealisator</ins>(**Node_realisator \*** root, **char \*** requestedRealisator ) -> Cherche tous les films d'un réalisateur en parcourant un arbre selon l'algorithme avancée trie
+- **Realisator \***  <ins>topRealisator</ins>(**byMovieNumber \*** byMoviesNumber) -> Renvoie le premier élément de byMoviesNumber, qui correspond au réalisateur avec le plus de film
 
 <ins>Fonctions de gestions des fichiers textes</ins>
 
 *On listera ici toutes les fonctions gérant les fichiers textes permettant au client et au serveur de communiquer*
 
-- **void** <ins>readRequest</ins>(**FILE \*** requestFile) -> Lit le fichier request.txt et appelle une des fonctions de recherches selon son contenu. Appellera les fonctions créant result.txt
-- **void** <ins>filmResult</ins>(**Film \*\*** movies) -> Créé un fichier result.txt contenant tous les films dans le tableau movies
-- **void** <ins>realisatorResult</ins>(**Realisator \*** realisator) -> Créé un fichier result.txt contenant les informations du réalisateur en paramètre
-- **void** <ins>rankResult</ins>(**Realisator \*\*** realisators) -> Créé un fichier result.txt contenant les informations de tous les réalisateurs, dans l'ordre du tableau en paramètre
+- **void** <ins>readRequest</ins>(**FILE \*** requestFile, **Node_Realisator \*** tree, **byMovieNumber \*** byMoviesNumber,  ) -> Lit le fichier request.txt et appelle une des fonctions de recherches selon son contenu. Appellera les fonctions créant result.txt
+- **void** <ins>filmResult</ins>(**Film_List \*** movies, **float** executionTime, **int** type) -> Créé un fichier result.txt contenant tous les films dans le tableau movies
+- **void** <ins>realisatorResult</ins>(**Realisator \*** realisator, **float** executionTime) -> Créé un fichier result.txt contenant les informations du réalisateur en paramètre
+- **void** <ins>rankResult</ins>(**byMovieNumber \*** realisators) -> Créé un fichier result.txt contenant les informations de tous les réalisateurs, dans l'ordre du tableau en paramètre
+
+## Logs
+- <ins>Lundi 12 juin : </ins>
+Création d'une fonction readCSV, qui lit une seule fois le fichier csv, créant des structures qu'elle envoit aux fonctions créant les structures de recherhce
+
+Changement de structure de byMovieNumber de tableau à lcaa
+
+- <ins>Mardi  13 juin : </ins>
+
+Changement de Films dans la struct Realisator, qui passe d'un tableau à une liste chainee
+Retrait des valeurs minTime et maxTime
+Changement de type de moviesByRealisator
+Changement de parametre de filmResult
+Changement de parametre de realisatorResult
+Precision sur la forme de result.txt
+Cgt de parametre sur topRealisator
+Cgt param rankResult
+Refonte time_array
+Cgt param moviesByTime
