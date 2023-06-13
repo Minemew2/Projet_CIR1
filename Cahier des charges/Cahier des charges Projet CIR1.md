@@ -86,6 +86,7 @@ avec :
 
 - <ins>result.txt</ins> : Fichier csv contenant le résultat de la requête (pour la recherche de films)
 ```txt
+request
 executionTime
 movieName1;time1;category1
 movieName2;time2;category2
@@ -100,6 +101,7 @@ OU
 
 pour la recherche du premier realisateur
 ```txt
+request
 executionTime
 realisator1;moviesNbr1
 movieName1;time1;category1
@@ -111,6 +113,7 @@ OU
 
 pour le classement de realisateur
 ```txt
+request
 executionTime
 realisator1;moviesNbr1
 realisator2;moviesNbr2
@@ -247,7 +250,7 @@ Tableau trié par ordre décroissant selon le nombre de films du réalisateur
 
 *Pour chacune des fonctions de recherche, on lancera au début de celle-ci la fonction clock() de la bibliothèque time.h, puis une seconde fois à la fin de la fonction, afin de savoir le temps d'exécution de la requête. On écrira ce résultat dans un fichier result.txt*
 
-- **Film \*\*** <ins>moviesByTime</ins>(**int** timeAsked, **int** minTime, **int** maxTime, **Film \*\*\*** time_array) -> Recherche les films par durée. Pour cela, on accède au tableau time_array avec comme index *timeAsked - minTime*
+- **Film_List \*** <ins>moviesByTime</ins>(**Film_List \*** byDuration, **int** duration) -> Recherche les films par durée. Pour cela, on accède au tableau time_array avec comme index *timeAsked - minTime*
 *Exemple* : Si on veut accéder aux films de 125 minutes, et que les films les plus courts sont de 120 minutes, on sait que les films recherchés seront en 6ème dans time_array, soit à l'index 5.
 - **Film_List \*** <ins>moviesByRealisator</ins>(**Node_realisator \*** root, **char \*** requestedRealisator ) -> Cherche tous les films d'un réalisateur en parcourant un arbre selon l'algorithme avancée trie
 - **Realisator \***  <ins>topRealisator</ins>(**byMovieNumber \*** byMoviesNumber) -> Renvoie le premier élément de byMoviesNumber, qui correspond au réalisateur avec le plus de film
@@ -257,7 +260,7 @@ Tableau trié par ordre décroissant selon le nombre de films du réalisateur
 *On listera ici toutes les fonctions gérant les fichiers textes permettant au client et au serveur de communiquer*
 
 - **void** <ins>readRequest</ins>(**FILE \*** requestFile, **Node_Realisator \*** tree, **byMovieNumber \*** byMoviesNumber,  ) -> Lit le fichier request.txt et appelle une des fonctions de recherches selon son contenu. Appellera les fonctions créant result.txt
-- **void** <ins>filmResult</ins>(**Film_List \*** movies, **float** executionTime) -> Créé un fichier result.txt contenant tous les films dans le tableau movies
+- **void** <ins>filmResult</ins>(**Film_List \*** movies, **float** executionTime, **int** type) -> Créé un fichier result.txt contenant tous les films dans le tableau movies
 - **void** <ins>realisatorResult</ins>(**Realisator \*** realisator, **float** executionTime) -> Créé un fichier result.txt contenant les informations du réalisateur en paramètre
 - **void** <ins>rankResult</ins>(**byMovieNumber \*** realisators) -> Créé un fichier result.txt contenant les informations de tous les réalisateurs, dans l'ordre du tableau en paramètre
 
@@ -278,3 +281,4 @@ Precision sur la forme de result.txt
 Cgt de parametre sur topRealisator
 Cgt param rankResult
 Refonte time_array
+Cgt param moviesByTime
