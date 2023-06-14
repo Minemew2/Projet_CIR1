@@ -4,8 +4,11 @@
 
 #include "research.h"
 #include <time.h>
+#include "delete.h"
 
-void readRequest(FILE * request_file, Node_realisator * tree, byMovieNumber * ranking, Film_List ** byDuration, int * mustExit){
+#define RESULT_ROOT "../Site/result.txt"
+
+void readRequest(FILE * request_file, Node_realisator * tree, byMovieNumber * ranking, Film_List ** byDuration, int * mustExit, char * pathToRequest){
     char line[1024];
 
     int type_of_request = 0;
@@ -29,19 +32,21 @@ void readRequest(FILE * request_file, Node_realisator * tree, byMovieNumber * ra
         tok = strtok(NULL, "\n");
 
         request_value = tok;
-        printf("requete : %d value : %s\n",type_of_request, request_value);
+        // printf("requete : %d value : %s\n",type_of_request, request_value);
 
         number_of_request++;
         all_request_type[number_of_request-1] = type_of_request;
         all_request_value[number_of_request-1] = request_value;
+        free(tmp);
     }
 
     if(number_of_request){
-        remove("request.txt");
+        printf("It's ok !");
+        remove(pathToRequest);
     } else {
         fclose(request_file);
     }
-    printf("requetes : %d\n", number_of_request);
+    // printf("requetes : %d\n", number_of_request);
     if(number_of_request == 2){
         printf("Deux requetes !");
         Film_List ** all_result = malloc(sizeof(Film_List*)*2);
@@ -108,6 +113,9 @@ void readRequest(FILE * request_file, Node_realisator * tree, byMovieNumber * ra
 
     case 5:
         *mustExit = 1;
+        freeTree(tree);
+        freeByDuration(byDuration);
+        freeByMoviesNumber(ranking);
         break;
 
     default:
@@ -115,6 +123,8 @@ void readRequest(FILE * request_file, Node_realisator * tree, byMovieNumber * ra
         break;
     }
     }
+
+    createReady();
 
 
     
@@ -133,8 +143,8 @@ void writeFilmList(Film_List * film_list, FILE * fileToWrite){
 }
 
 void filmResult(Film_List * movie_list, float executionTime, int type_of_result){
-    remove("result.txt");
-    FILE * result = fopen("result.txt", "w");
+    remove(RESULT_ROOT);
+    FILE * result = fopen(RESULT_ROOT, "w");
 
     fprintf(result, "%d\n", type_of_result);    
     fprintf(result, "%.4f\n", executionTime);
@@ -146,8 +156,8 @@ void filmResult(Film_List * movie_list, float executionTime, int type_of_result)
 }
 
 void realisatorResult(Realisator * realisator, float executionTime, int type_of_result){
-    remove("result.txt");
-    FILE * result = fopen("result.txt", "w");
+    remove(RESULT_ROOT);
+    FILE * result = fopen(RESULT_ROOT, "w");
 
     fprintf(result, "%d\n", type_of_result);
     fprintf(result, "%.4f\n", executionTime);
@@ -160,8 +170,8 @@ void realisatorResult(Realisator * realisator, float executionTime, int type_of_
 
 void rankResult(byMovieNumber * array, float execution, int type_of_result){
 
-    remove("result.txt");
-    FILE * result = fopen("result.txt", "w");
+    remove(RESULT_ROOT);
+    FILE * result = fopen(RESULT_ROOT, "w");
     
     fprintf(result, "%d\n", type_of_result);
     fprintf(result, "%.4f\n", execution);
@@ -177,7 +187,12 @@ void rankResult(byMovieNumber * array, float execution, int type_of_result){
 }
 
 void errorResult(){
-    FILE * result = fopen("result.txt", "w");
+    FILE * result = fopen(RESULT_ROOT, "w");
     fprintf(result, "error");
+    fclose(result);
+}
+
+void createReady(){
+    FILE * result = fopen("../Site/ready.txt", "w");
     fclose(result);
 }
