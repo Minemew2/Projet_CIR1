@@ -1,10 +1,23 @@
-tableautotal = get_request_result()
-console.log(tableautotal)
-var title = tableautotal[1];
-var time = tableautotal[2]
-var category = tableautotal[3]
+let tableautotal = get_request_result();
+console.log("nombre ", tableautotal.length);
 
+console.log("total ", tableautotal);
+console.log("nombre ", tableautotal.length);
+
+var title = tableautotal[1];
+console.log("nombre ", tableautotal.length);
+var time = tableautotal[2]
+console.log("nombre ", tableautotal.length);
+var category = tableautotal[3]
+console.log("nombre ", tableautotal.length);
 var tableauHTML = '<table>';
+
+//console.log("les titres", tableautotal[1][0]);
+console.log(String(time));
+console.log(String(category));
+
+console.log("nombre ", tableautotal.length);
+
 
 tableauHTML += '<tr>';
 tableauHTML += '<th>Index</th>';

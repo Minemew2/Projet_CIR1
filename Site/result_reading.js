@@ -23,11 +23,11 @@ function get_request_result(){
                         callback(xhr.responseText);
                     } else {
                 // ***No, tell the callback the call failed***
-                        callback(null);
+                        // callback(null);
                     }
                 }
             };
-        xhr.open("GET", fileName);
+        xhr.open("GET", fileName,false);
         xhr.send();
 
         }
@@ -124,4 +124,4 @@ function get_request_result(){
     return final_result;
 }
 
-console.log("result", get_request_result());
+/*console.log("result", get_request_result());*/
