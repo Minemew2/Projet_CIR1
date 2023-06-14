@@ -1,4 +1,4 @@
-tableautotal=get_request_result()
+var tableautotal=get_request_result()
 var realisator=tableautotal[1];
 var nbFilms=tableautotal[2]
 

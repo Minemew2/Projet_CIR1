@@ -1,4 +1,4 @@
-tableautotal=get_request_result()
+var tableautotal=get_request_result()
 var realisator=tableautotal[1];
 var title=tableautotal[3]
 var time=tableautotal[4]
