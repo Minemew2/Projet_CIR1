@@ -40,7 +40,6 @@ function closeClicked() {
     let func = [5];
     writeFile(id_form, func);
 }
-
 let dataButton = document.getElementById("data");
 dataButton.addEventListener("click", dataClicked);
 
