@@ -48,10 +48,6 @@ span {
     font-size: large;
 }
 
-.attribut {
-    width: auto;
-}
-
 .other {
     margin-right: 5%;
 
@@ -110,7 +106,7 @@ table {
     background-color: #c79f00;
     border-radius: 5%;
     border-color: black;
-    border-style: groove;
+    border-style: solid;
     border-width: 2%;
 }
 
@@ -122,6 +118,7 @@ tr {
 }
 
 th {
+    margin-top: 5px;
     width: 20%;
     text-align: center;
     display: block;
@@ -142,6 +139,8 @@ td {
     background-color: #fecc00;
     border-radius: 5%;
     border-color: black;
-    border-style: block;
+    border-style: double;
     border-width: 1%;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
