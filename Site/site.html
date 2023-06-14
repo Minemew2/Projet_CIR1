@@ -9,8 +9,6 @@
         href="https://png.pngtree.com/png-vector/20210227/ourmid/pngtree-letter-x-logo-design-png-png-image_2973718.jpg"
         type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="site.css">
-    <script src="site.js"></script>
-    <script src="read_write.js"></script>
 </head>
 
 <body>
@@ -19,55 +17,59 @@
             <span>Filmographie</span>
         </h2>
         <div class="inner-container">
-            <a href="site.html" class="attribut" onclick="return donnees()">
+            <a href="site.html" class="attribut" id="accueil">
                 Accueil
             </a>
-            <a href="premier.html" class="attribut" onclick="return top()">
+            <a href="premier.html" class="attribut" id="premier">
                 Premier
             </a>
-            <a href="ranking.html" class="attribut" onclick="return rank()">
+            <a href="ranking.html" class="attribut" id="classement">
                 Classement
             </a>
         </div>
-        <h3 class="other">
+        <h3 class="other" id="close">
             Fermer le serveur
         </h3>
     </nav>
     
     <main class="maintheme">
-        <form action="search.html" onsubmit="return donnees()" class="request">
-            <h1 class="request">Filmographie</h1>
-            <input type="text" name="realisator" id="real" value="" placeholder="Réalisateur">
-            <input type="number" name="time" id="duree" placeholder="Durée" min="10" max="300">
-            <select name="category" id="categorie">
-                <option value="">Catégorie</option>
-                <option value="action">Action</option>
-                <option value="adventure">Adventure</option>
-                <option value="animation">Animation</option>
-                <option value="comedy">Comedy</option>
-                <option value="crime">Crime</option>
-                <option value="disaster">Disaster</option>
-                <option value="documentary">Documentary</option>
-                <option value="drama">Drama</option>
-                <option value="educational">Educational</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="horror">Horror</option>
-                <option value="musical">Musical</option>
-                <option value="mystery">Mystery</option>
-                <option value="parody">Parody</option>
-                <option value="romance">Romance</option>
-                <option value="sf">Science Fiction</option>
-                <option value="sports">Sports</option>
-                <option value="superhero">Superhero</option>
-                <option value="suspense">Suspense</option>
-                <option value="thriller">Thriller</option>
-                <option value="war">War</option>
-                <option value="western">Western</option>
-            </select>
-            <input type="submit" value="Envoyer" class="submitButton">
-            <div class="square"></div>
-        </form>
+        <div class="request">
+            <div class="square">
+                <h1 class="request">Filmographie</h1>
+                <div class="allRequests">
+                    <input type="text" name="realisator" id="real" value="" placeholder="Réalisateur">
+                    <input type="number" name="time" id="duree" placeholder="Durée" min="10" max="300">
+                    <select name="category" id="categorie">
+                        <option value="">Catégorie</option>
+                        <option value="action">Action</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="animation">Animation</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="crime">Crime</option>
+                        <option value="disaster">Disaster</option>
+                        <option value="documentary">Documentary</option>
+                        <option value="drama">Drama</option>
+                        <option value="educational">Educational</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="horror">Horror</option>
+                        <option value="musical">Musical</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="parody">Parody</option>
+                        <option value="romance">Romance</option>
+                        <option value="sf">Science Fiction</option>
+                        <option value="sports">Sports</option>
+                        <option value="superhero">Superhero</option>
+                        <option value="suspense">Suspense</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="war">War</option>
+                        <option value="western">Western</option>
+                    </div>
+                </select>
+                <input type="submit" value="Envoyer" class="submitButton" id="data">
+            </div>
+        </div>
     </main>
 </body>
-
 <script src="result_reading.js"></script>
+<script src="site.js"></script>
+<script src="read_write.js"></script>
