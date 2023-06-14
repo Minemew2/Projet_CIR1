@@ -1,5 +1,6 @@
-var realisator=["James Cameron", "Steven Spielberg","Léandre"]
-var nbFilms=["188","156","102"]
+tableautotal=get_request_result()
+var realisator=tableautotal[1];
+var nbFilms=tableautotal[2]
 
 var nombreDeLignes = realisator.length;
 var tableauHTML = '<table>';

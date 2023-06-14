@@ -1,23 +1,24 @@
-var realisator=["James Cameron", "Steven Spielberg","James Cameron"]
-var title=["Titanic", "Indiana Jones","Avatar"]
-var time=["120", "90","180"]
+tableautotal = get_request_result()
+console.log(tableautotal)
+var title = tableautotal[1];
+var time = tableautotal[2]
+var category = tableautotal[3]
 
-var nombreDeLignes = realisator.length;
 var tableauHTML = '<table>';
 
 tableauHTML += '<tr>';
 tableauHTML += '<th>Index</th>';
 tableauHTML += '<th>Title</th>';
-tableauHTML += '<th>Realisator</th>';
 tableauHTML += '<th>Time</th>';
+tableauHTML += '<th>Category</th>';
 tableauHTML += '</tr>';
 
-for (var i = 0; i < nombreDeLignes; i++) {
+for (var i = 0; i < title.length; i++) {
     tableauHTML += '<tr>';
-    tableauHTML += '<td>' + i + '</td>'; 
-    tableauHTML += '<td>' + title[i] + '</td>'; 
-    tableauHTML += '<td>' + realisator[i] + '</td>'; 
-    tableauHTML += '<td>' + time[i] + '</td>'; 
+    tableauHTML += '<td>' + i + '</td>';
+    tableauHTML += '<td>' + title[i] + '</td>';
+    tableauHTML += '<td>' + time[i] + '</td>';
+    tableauHTML += '<td>' + category[i] + '</td>';
     tableauHTML += '</tr>';
 }
 
