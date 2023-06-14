@@ -40,22 +40,10 @@ function writeFile(id_form,func) {
 // -------------------------
 
 
-// ------- READ FILE -------
-function readFileByName(fileName){
 
-    let xhr = new XMLHttpRequest();
-    do {
-        xhr.open("GET", fileName, false);
-        xhr.send(null);
-
-    }while(xhr.status === 404);
-
-    // assumes status 200
-    return xhr.responseText;
-}
-
-function zreadFile(){
-    readFileByName("ready.txt");
-    return readFileByName("results.txt");
-}
+// function zreadFile(){
+    // readFileByName("ready.txt");
+    // return readFileByName("results.txt");
+// }
 // -------------------------
+
